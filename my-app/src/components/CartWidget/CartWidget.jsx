@@ -13,7 +13,7 @@ const CartWidget = () => {
     setNumero(0);
   };
 
-  return <div>&#128722;{numero} </div>;
+  return <div>&#128722;{numero} </div>; 
 };
 
 export default CartWidget;
