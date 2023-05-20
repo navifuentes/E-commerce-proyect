@@ -1,7 +1,7 @@
 import React from "react";
-import Logo from "./Logo/Logo.js";
-import Categorias from "./Categorias/Categorias.js";
-import HamburgerMenu from "./HamburgerMenu/HamburgerMenu.js";
+import Logo from "./Logo/Logo.jsx";
+import Categorias from "./Categorias/Categorias.jsx";
+import HamburgerMenu from "./HamburgerMenu/HamburgerMenu.jsx";
 import CartWidget from "../CartWidget/CartWidget.jsx";
 
 const Navbar = () => {
