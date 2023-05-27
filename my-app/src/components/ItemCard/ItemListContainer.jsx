@@ -1,7 +1,5 @@
-import React, { Fragment } from "react";
-import ItemListContainer from "../components/ItemCard/ItemListContainer";
-// import ItemCard from "../components/ItemCard/ItemCard";
-import { useParams } from "react-router-dom";
+import React from "react";
+import ItemCard from "./ItemCard";
 
 const items = [
   {
@@ -90,17 +88,18 @@ const items = [
   },
 ];
 
-const Home = () => {
-  const { category } = useParams();
-  console.log(category)
-  return (
-    <Fragment>
-      <ItemListContainer filter={category} />
-    </Fragment>
+const ItemListContainer = ({ filter }) => {
+  const filtered = filter ? items.filter((e) => e.category == filter) : items;
 
-    /*
-     */
+  
+  console.log(filtered);
+  return (
+    <div className="grid grid-cols-3 justify-around">
+      {filtered.map((item) => (
+        <ItemCard key={item.id} {...item} />
+      ))}
+    </div>
   );
 };
 
-export default Home;
+export default ItemListContainer;

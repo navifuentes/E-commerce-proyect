@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Categoria = (props) => {
   return (
     <>
-      <NavLink to={`/${props.redirect}`}>{props.categoryName}</NavLink>
+      <NavLink className="px-2" to={`/category/${props.redirect}`}>{props.categoryName}</NavLink>
     </>
   );
 };

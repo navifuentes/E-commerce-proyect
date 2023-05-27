@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Home from "../pages/Home";
-import Products from "../pages/Products";
 import Checkout from "../pages/Checkout";
+import ItemDetail from "../pages/ItemDetail";
 
 export const Rutas = () => {
   return (
@@ -12,8 +12,11 @@ export const Rutas = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/products/:id" element={<Products />} />
+        <Route path="/products/:id" element={<ItemDetail />} />
+        <Route path="/category/:id" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
 };
+
+export default Rutas;
