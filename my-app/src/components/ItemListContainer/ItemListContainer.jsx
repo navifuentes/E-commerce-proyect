@@ -3,7 +3,8 @@ import useFirebase from "../../hooks/useFirebase";
 import ItemCard from "../ItemCard/ItemCard";
 
 const ItemListContainer = () => {
-  const { productos, getProducts, getProductsCategory } = useFirebase();
+
+  const { productos, getProducts } = useFirebase();
   const [filter, setFilter] = useState([]);
 
   useEffect(() => {
