@@ -3,13 +3,12 @@ import useFirebase from "../../hooks/useFirebase";
 import ItemCard from "../ItemCard/ItemCard";
 
 const ItemListContainer = () => {
-
   const { productos, getProducts } = useFirebase();
   const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     getProducts();
-  });
+  }, [productos]);
 
   return (
     <div className="grid grid-cols-2 justify-around">
