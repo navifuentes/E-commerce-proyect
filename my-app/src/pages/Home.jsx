@@ -1,9 +1,7 @@
 import React, { Fragment } from "react";
-import ItemListContainer from "../components/ItemCard/ItemListContainer";
-// import ItemCard from "../components/ItemCard/ItemCard";
-import { useParams } from "react-router-dom";
+import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 
-const items = [
+/* const items = [
   {
     id: "1",
     titulo: "Item 1",
@@ -88,18 +86,13 @@ const items = [
     category: "jabon",
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing.",
   },
-];
+]; */
 
 const Home = () => {
-  const { category } = useParams();
-  console.log(category)
   return (
-    <Fragment>
-      <ItemListContainer filter={category} />
-    </Fragment>
-
-    /*
-     */
+    <>
+      <ItemListContainer />
+    </>
   );
 };
 

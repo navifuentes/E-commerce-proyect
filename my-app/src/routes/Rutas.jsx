@@ -1,20 +1,25 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Home from "../pages/Home";
-import Checkout from "../pages/Checkout";
 import ItemDetail from "../pages/ItemDetail";
+import Cart from "../pages/Cart";
+import Footer from "../components/Footer/Footer";
+import GlobalProvider from "../context/GlobalContext";
 
 export const Rutas = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/products/:id" element={<ItemDetail />} />
-        <Route path="/category/:id" element={<Home />} />
-      </Routes>
+      <GlobalProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products/:id" element={<ItemDetail />} />
+          <Route path="/category/:category" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+        <Footer />
+      </GlobalProvider>
     </BrowserRouter>
   );
 };
