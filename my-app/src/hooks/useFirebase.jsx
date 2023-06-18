@@ -15,10 +15,12 @@ const useFirebase = () => {
       const result = col.docs.map(
         (doc) => (doc = { id: doc.id, ...doc.data() })
       );
+
       if (!category) {
         setProductos(result);
+      } else {
+        setProductos(result.filter((prod) => prod.category == category));
       }
-      setProductos(result.filter((prod) => prod.category == category));
     } catch (error) {
       console.log(error);
     }
