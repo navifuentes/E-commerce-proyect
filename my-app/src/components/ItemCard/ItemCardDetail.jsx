@@ -1,6 +1,9 @@
 import React from "react";
 import ProductDetailCounter from "../Counter/ProductDetailCounter";
 
+
+
+
 const ItemCardDetail = (props) => {
   const { id, titulo, price, description, img, marca, stock } = props;
 
@@ -12,7 +15,7 @@ const ItemCardDetail = (props) => {
         <img src={img} alt={description} />
         <span>{description}</span>
         <p className="text-2xl"> $ {price}</p>
-        <ProductDetailCounter></ProductDetailCounter>
+        <ProductDetailCounter product={titulo} price={price}/>
       </div>
     </div>
   );

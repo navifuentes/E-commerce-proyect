@@ -6,20 +6,23 @@ import ItemDetail from "../pages/ItemDetail";
 import Cart from "../pages/Cart";
 import Footer from "../components/Footer/Footer";
 import GlobalProvider from "../context/GlobalContext";
+import CartProvider from "../context/CartProvider";
 
 export const Rutas = () => {
   return (
     <BrowserRouter>
-      <GlobalProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products/:id" element={<ItemDetail />} />
-          <Route path="/category/:category" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-        <Footer />
-      </GlobalProvider>
+      <CartProvider>
+        <GlobalProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products/:id" element={<ItemDetail />} />
+            <Route path="/category/:category" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </GlobalProvider>
+      </CartProvider>
     </BrowserRouter>
   );
 };

@@ -10,8 +10,33 @@ const ItemDetail = () => {
 
   useEffect(() => {
     getProduct({ id });
-  }, [producto]);
+  }, []);
 
+  /* // Hardcoded array of products
+  const products = [
+    {
+      id: "1",
+      titulo: "Product 1",
+      price: 10.99,
+      description: "Description 1",
+      img: "image1.jpg",
+      marca: "Brand 1",
+      stock: 5,
+    },
+    {
+      id: "2",
+      titulo: "Product 2",
+      price: 15.99,
+      description: "Description 2",
+      img: "image2.jpg",
+      marca: "Brand 2",
+      stock: 10,
+    },
+    // Add more products as needed
+  ];
+
+  const producto = products.find((product) => product.id === id);
+ */
   return (
     <>
       <ItemCardDetail key={producto.id} {...producto} />

@@ -1,19 +1,20 @@
-import { React, useState } from "react";
+import { React, useContext } from "react";
+import { CartContext } from "../../context/CartProvider";
+import { NavLink, useParams } from "react-router-dom";
 
 const CartWidget = () => {
-  const [numero, setNumero] = useState(0);
+  const { cart } = useContext(CartContext);
+  const currentUrl = useParams();
 
-  const sumar = () => {
-    setNumero(numero + 1);
-  };
-  const restar = () => {
-    setNumero(numero - 1);
-  };
-  const reset = () => {
-    setNumero(0);
-  };
+  const numero = cart.length;
 
-  return <div className="mr-4">&#128722;{numero} </div>; 
+  return numero > 0 ? (
+    <NavLink to={"/cart"} className="mr-4">
+      &#128722;{numero}{" "}
+    </NavLink>
+  ) : (
+    <div className="mr-4">&#128722;{numero} </div>
+  );
 };
 
 export default CartWidget;

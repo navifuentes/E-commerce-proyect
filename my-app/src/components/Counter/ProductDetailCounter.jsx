@@ -1,27 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "../../context/CartProvider";
 
-const ProductDetailCounter = () => {
+const ProductDetailCounter = ({ product, price }) => {
   const [number, setNumber] = useState(0);
+  const { cart, addToCart } = useContext(CartContext);
+  const item = { product: product, price: price, quantity: number };
+
   const sumar = () => {
     setNumber(number + 1);
   };
   const restar = () => {
-    setNumber(number - 1);
+    if (number > 0) {
+      setNumber(number - 1);
+    }
   };
   // const reset = () => {
   //   setNumber(0);
   // };
+  console.log("cart", cart);
 
   return (
     <div>
-      <button className="rounded-lg bg-blue-800 hover:bg-blue-950 mx-2 px-2" onClick={sumar}>
+      <button
+        className="rounded-lg bg-blue-800 hover:bg-blue-950 mx-2 px-2"
+        onClick={sumar}
+      >
         +
       </button>
-      <button className="bg-white text-black hover:cursor-default px-2">{number}</button>
-      <button className="rounded-lg bg-blue-800 hover:bg-blue-950 mx-2 px-2" onClick={restar}>
+      <button className="bg-white text-black hover:cursor-default px-2">
+        {number}
+      </button>
+      <button
+        className="rounded-lg bg-blue-800 hover:bg-blue-950 mx-2 px-2"
+        onClick={restar}
+      >
         -
       </button>
-      <button className="rounded-full bg-blue-800 hover:bg-blue-950 p-2">Agregar al carrito</button>
+      <button
+        onClick={() => {
+          if (number > 0) addToCart(item);
+        }}
+        className="rounded-full bg-blue-800 hover:bg-blue-950 p-2"
+      >
+        Agregar al carrito
+      </button>
     </div>
   );
 };
