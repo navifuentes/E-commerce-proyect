@@ -4,7 +4,6 @@ import ItemCard from "../ItemCard/ItemCard";
 
 const ItemListContainer = () => {
   const { productos, getProducts } = useFirebase();
-  const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     getProducts();
