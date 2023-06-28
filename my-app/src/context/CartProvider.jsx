@@ -5,22 +5,21 @@ export const CartContext = createContext("");
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  //LOGICA Q NO SE REPITA EL PRODUCTO
-
   const addToCart = (product) => {
-    //LOGICA CHECKEAR SI HAY PRODUCTO; CHEQUEAR CON FIREBASE
-    const productExist = cart.find((item) => item.product == product.product);
+    const productExist = cart.find((item) => item.id === product.id);
+    const { price, quantity } = product;
+    product.total = price * quantity;
 
-    if (productExist) {
-      const updatedCart = cart.map((item) =>
-        item.product == product.product
+    if (!productExist) {
+      setCart([...cart, product]);
+    } else {
+      const updateCart = cart.map((item) =>
+        item.id === product.id
           ? { ...item, quantity: item.quantity + product.quantity }
           : item
       );
-      setCart(updatedCart);
+      setCart(updateCart);
     }
-
-    setCart([...cart, product]);
   };
 
   const cleanCart = () => setCart([]);

@@ -1,20 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useFirebase from "../../hooks/useFirebase";
 import ItemCard from "../ItemCard/ItemCard";
+import { useParams } from "react-router-dom";
+import { useFilters } from "../../hooks/useFilters";
+import productsMock from "../../mocks/products.json";
 
 const ItemListContainer = () => {
-  const { productos, getProducts } = useFirebase();
+  const { category } = useParams();
+  const { filterProducts, setFilter } = useFilters();
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  //deberia ir en un useeffect (?)
+  const prodRender = category
+    ? (setFilter(category), filterProducts(productsMock))
+    : productsMock;
+
+  // const { productos, getProducts } = useFirebase();
+
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
 
   return (
-    <div className="grid grid-cols-2 justify-around">
-      {productos.map((product) => (
-        <ItemCard key={product.id} {...product} />
-      ))}
-    </div>
+    <main className="items-center">
+      <ul className="grid grid-cols-3">
+        {prodRender.map((product) => (
+          <ItemCard key={product._id} {...product} />
+        ))}
+      </ul>
+    </main>
   );
 };
 

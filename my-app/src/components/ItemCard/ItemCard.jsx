@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ItemCard = (props) => {
-  const { id, titulo, price, description, img, marca, stock } = props;
+  const { _id, title, price, description, img, marca, stock } = props;
   const navigate = useNavigate();
 
   return (
@@ -13,17 +13,14 @@ const ItemCard = (props) => {
         src={img}
         alt={description}
       />
-      <h1>{titulo}</h1>
+      <h1>{title}</h1>
       <p>$ {price}</p>
       <span>{description}</span>
       <button
         className="rounded-full bg-blue-800 px-2 hover:bg-blue-950"
-        onClick={() => navigate(`/products/${id}`)}
+        onClick={() => navigate(`/products/${_id}`)}
       >
         Ver más
-      </button>
-      <button className="rounded-full bg-blue-800 mt-2 px-2 hover:bg-blue-950">
-        Agregar al carrito
       </button>
     </div>
   );

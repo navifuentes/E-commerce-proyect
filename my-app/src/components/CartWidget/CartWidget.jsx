@@ -1,19 +1,19 @@
 import { React, useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const CartWidget = () => {
   const { cart } = useContext(CartContext);
-  const currentUrl = useParams();
+  //const currentUrl = useParams();
 
-  const numero = cart.length;
+  const number = cart.length;
 
-  return numero > 0 ? (
+  return number > 0 ? (
     <NavLink to={"/cart"} className="mr-4">
-      &#128722;{numero}{" "}
+      &#128722;{number}{" "}
     </NavLink>
   ) : (
-    <div className="mr-4">&#128722;{numero} </div>
+    <div className="mr-4">&#128722;{number} </div>
   );
 };
 

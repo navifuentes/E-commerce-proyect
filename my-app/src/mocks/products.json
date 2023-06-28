@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "4OwTCZOM482lvzC4pldj",
+    "title": "Shampoo Head & Shoulders Classic Clean",
+    "category": "shampoos",
+    "company": "head & shoulders",
+    "description": "shampoo hidratante con fórmula clásica",
+    "price": 2800,
+    "stock": 30,
+    "img": "https://images.albertsons-media.com/is/image/ABS/152010458?$ecom-pdp-desktop$&defaultImage=Not_Available&defaultImage=Not_Available"
+  },
+  {
+    "_id": "6QT6iT95bzYbVW7ubUT7",
+    "title": "Acondicionador Tio Nacho Aclarante",
+    "category": "acondicionadores",
+    "company": "tio nacho",
+    "description": "acondicionador aclarante con jalea real y manzanilla",
+    "price": 4500,
+    "stock": 29,
+    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.H2aaODRPfuBhZiBlA0DqRAAAAA%26pid%3DApi&f=1&ipt=6b2e9c4c83497eaa4acaa721ebffbaccddf402c949ecd9b4645a1299eb3149cd&ipo=images"
+  },
+  {
+    "_id": "8QnHit0LpgmOu9bw97Hj",
+    "title": "Jabon Dove Beauty Cream",
+    "category": "jabones",
+    "company": "dove",
+    "description": "jabon cremoso hidratante",
+    "price": 1500,
+    "stock": 50,
+    "img": "https://www.supermercadolosportales.pe/wp-content/uploads/2020/05/JABON-DOVE-BLANCO-CREMOSO-90-GR.-2.jpg"
+  },
+  {
+    "_id": "Gm0m8cAJa6D6hBtVXUyV",
+    "title": "Acondicionador Sedal Tratamiento",
+    "category": "acondicionadores",
+    "company": "sedal",
+    "description": "acondicionador secado rápido y liso perfecto",
+    "price": 2900,
+    "stock": 28,
+    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.V2jcXBIXxICLNlLU88IU0AAAAA%26pid%3DApi&f=1&ipt=f8f8a36fc73588a02ce89ed8bceb8d47a75b16181bada64d84f01f1ef862785e&ipo=images"
+  },
+  {
+    "_id": "MhoS6g8mS2k147NH1XQT",
+    "title": "Jabon Lux Vainilla",
+    "category": "jabones",
+    "company": "lux",
+    "description": "jabon con extracto de flores de vainilla",
+    "price": 1000,
+    "stock": 55,
+    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.pl3GuaP5MXlsSkvzQlPDGAHaHA%26pid%3DApi&f=1&ipt=2f06fb0c1a02fa30008b364fbef4f0f664075d37a1f2bef52ee5311944636e02&ipo=images"
+  },
+  {
+    "_id": "OfFEdCXFOPmR7q2lfc0D",
+    "title": "Jabon Nivea Fresh",
+    "category": "jabones",
+    "company": "nivea",
+    "description": "jabon antibacterial cremoso",
+    "price": 1200,
+    "stock": 40,
+    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.V2jcXBIXxICLNlLU88IU0AAAAA%26pid%3DApi&f=1&ipt=f8f8a36fc73588a02ce89ed8bceb8d47a75b16181bada64d84f01f1ef862785e&ipo=images"
+  },
+  {
+    "_id": "aBMSYnFEsQbmj3a1H4Qg",
+    "title": "Shampoo L'Oreal coco",
+    "category": "shampoos",
+    "company": "l'oreal",
+    "description": "acondicionador secado rápido y liso perfecto",
+    "price": 3500,
+    "stock": 30,
+    "img": "https://cosmetic-club.com.ua/image/cache/catalog/L'OREAL%20PROFESSIONNEL/LP%20NUTRIFIER%20GLYCEROL%20+%20COCO%20OIL%20SHAMPOO%20100ML-800x800.jpg"
+  },
+  {
+    "_id": "gfSKNQaj2ctXMth0L0mK",
+    "title": "Acondicionador Wella Enrich",
+    "category": "acondicionadores",
+    "company": "wella",
+    "description": "acondicionador enriquezedor de raices",
+    "price": 4000,
+    "stock": 28,
+    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.X9iiCq-gCXl4xGI32fZ-qQAAAA%26pid%3DApi&f=1&ipt=654c4c3ae0b06152dcade2c2bd15af164caef742cbac47e0ed6de2316b5fab0c&ipo=images"
+  },
+  {
+    "_id": "kWgmRlpOFhzzfwzRXnxh",
+    "title": "Shampoo Garnier Fructis",
+    "category": "shampoos",
+    "company": "garnier",
+    "description": "Shampoo garnier con extracto de frutas",
+    "price": 2900,
+    "stock": 28,
+    "img": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.JUG7_NqvvOWShOAD04OSOAAAAA%26pid%3DApi&f=1&ipt=c892bf7fbfda287d7aba05070ecc299291b37b1b82b38f3eecaf942aa9e7ef4e&ipo=images"
+  }
+]

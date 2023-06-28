@@ -1,10 +1,16 @@
 import React, { useState, useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
 
-const ProductDetailCounter = ({ product, price }) => {
+const ProductDetailCounter = ({ title, id, price }) => {
   const [number, setNumber] = useState(0);
   const { cart, addToCart } = useContext(CartContext);
-  const item = { product: product, price: price, quantity: number };
+
+  const item = {
+    title: title,
+    id: id,
+    price: price,
+    quantity: number,
+  };
 
   const sumar = () => {
     setNumber(number + 1);
@@ -14,9 +20,6 @@ const ProductDetailCounter = ({ product, price }) => {
       setNumber(number - 1);
     }
   };
-  // const reset = () => {
-  //   setNumber(0);
-  // };
   console.log("cart", cart);
 
   return (

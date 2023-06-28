@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import useFirebase from "../hooks/useFirebase.jsx";
+//import useFirebase from "../hooks/useFirebase.jsx";
+import products from "../mocks/products.json";
 import ItemCardDetail from "../components/ItemCard/ItemCardDetail.jsx";
 
 const ItemDetail = () => {
   const { id } = useParams();
-  const { producto, getProduct } = useFirebase();
+  const product = products.find((product) => product._id === id);
 
-  useEffect(() => {
-    getProduct({ id });
-  }, []);
+  // const { producto, getProduct } = useFirebase();
+
+  // useEffect(() => {
+  //   getProduct({ id });
+  // }, []);
 
   /* // Hardcoded array of products
   const products = [
@@ -39,7 +41,7 @@ const ItemDetail = () => {
  */
   return (
     <>
-      <ItemCardDetail key={producto.id} {...producto} />
+      <ItemCardDetail key={product.id} {...product} />
     </>
   );
 };
