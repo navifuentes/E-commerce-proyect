@@ -1,55 +1,39 @@
-import { collection, getDoc, getDocs, doc } from "firebase/firestore";
+import {
+  collection,
+  getDoc,
+  getDocs,
+  doc,
+  setDoc,
+  addDoc,
+  or,
+} from "firebase/firestore";
 import { db } from "../services/firebase.config";
-import { useState, useCallback, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useCallback, useContext } from "react";
 
-export function useFirebase({ search }) {
-  const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState({});
-  const { category } = useParams();
+import { GlobalContext } from "../context/GlobalContext";
+
+export default function useFirebase() {
+  const { products, setProducts, product, setProduct, filter, setFilter } =
+    useContext(GlobalContext);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const previousSearch = useRef(search);
+  console.log("accediendo a firebase");
 
-  const getProducts = useCallback(async ({ search }) => {
-    if (search === previousSearch.current) return;
+  const getProducts = useCallback(async () => {
     try {
-    } catch (error) {
+      setLoading(true);
       setError(null);
+      const prodsCol = collection(db, "products");
+      const prodsData = await getDocs(prodsCol);
+      setProducts(prodsData);
+    } catch (error) {
+      setError(error.message);
     } finally {
       setLoading(false);
     }
   }, []);
 
-  /*   const getProducts = async () => {
-    try {
-      const data = collection(db, "products");
-      const col = await getDocs(data);
-      const result = col.docs.map(
-        (doc) => (doc = { id: doc.id, ...doc.data() })
-      );
-
-      if (!category) {
-        setProductos(result);
-      } else {
-        setProductos(result.filter((prod) => prod.category == category));
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }; */
-  /* const getProductsCategory = async (category) => {
-    try {
-      const data = collection(db, "products");
-      const col = await getDocs(data);
-      const result = col.docs.map(
-        (doc) => (doc = { id: doc.id, ...doc.data() })
-      );
-      setProductos(result.filter((prod) => prod.category == category));
-    } catch (error) {
-      console.log(error);
-    }
-  }; */
   const getProduct = async ({ id }) => {
     try {
       const document = doc(db, "products", id);
@@ -61,10 +45,17 @@ export function useFirebase({ search }) {
     }
   };
 
+  const createOrder = async (order) => {
+    const newOrderDoc = await addDoc(collection(db, "orders"), order);
+  };
+
   return {
     product,
     products,
     getProduct,
     getProducts,
+    createOrder,
+    loading,
+    error,
   };
 }

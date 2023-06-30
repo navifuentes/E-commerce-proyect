@@ -17,7 +17,7 @@ const Cart = () => {
         ))}
         <p className="text-center text-yellow-500">total : $ {cartTotal} </p>
       </div>
-      <CartForm />
+      <CartForm cartTotal={cartTotal} cart={cart}/>
     </div>
   );
 };
