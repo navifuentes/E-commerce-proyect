@@ -46,7 +46,12 @@ export default function useFirebase() {
   };
 
   const createOrder = async (order) => {
-    const newOrderDoc = await addDoc(collection(db, "orders"), order);
+    try {
+      const newOrderDoc = await addDoc(collection(db, "orders"), order);
+      console.log(newOrderDoc);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return {
