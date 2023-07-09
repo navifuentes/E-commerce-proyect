@@ -1,31 +1,60 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useRef, useState } from "react";
 
 export const CartContext = createContext("");
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
+  const purchaseOrder = useRef(undefined);
 
-  const addToCart = (product) => {
+  function addToCart(product) {
     const productExist = cart.find((item) => item.id === product.id);
     const { price, quantity } = product;
-    product.total = price * quantity;
+    let newOrderTotal = price * quantity;
 
     if (!productExist) {
-      setCart([...cart, product]);
+      setCart([...cart, { ...product, total: newOrderTotal }]);
     } else {
       const updateCart = cart.map((item) =>
         item.id === product.id
-          ? { ...item, quantity: item.quantity + product.quantity }
+          ? {
+              ...item,
+              quantity: quantity + item.quantity,
+              total: item.total + newOrderTotal,
+            }
           : item
       );
       setCart(updateCart);
     }
-  };
+    return cart;
+  }
+  function cleanCart() {
+    setCart([]);
+    return cart;
+  }
+  function getCartTotal() {
+    if (cart.length > 0) {
+      const checkTotal = cart.map((item) => {
+        return item.total;
+      });
+      const sumTotal = checkTotal.reduce((prev, acum) => prev + acum);
 
-  const cleanCart = () => setCart([]);
-
+      setCartTotal(sumTotal);
+      return cartTotal;
+    }
+  }
   return (
-    <CartContext.Provider value={{ cart, addToCart, cleanCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        cleanCart,
+        cartTotal,
+        setCartTotal,
+        getCartTotal,
+        purchaseOrder,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

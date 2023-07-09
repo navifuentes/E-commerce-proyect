@@ -4,9 +4,7 @@ import { CartContext } from "../context/CartProvider";
 import CartCard from "../components/Card/CartCard";
 
 const Cart = () => {
-  const { cart } = useContext(CartContext);
-  let cartTotal = 0;
-  cart.map((product) => (cartTotal += product.total));
+  const { cart, getCartTotal } = useContext(CartContext);
 
   return (
     <div className="my-4 flex flex-row justify-evenly items-center">
@@ -15,9 +13,11 @@ const Cart = () => {
         {cart.map((product) => (
           <CartCard key={product} item={product} />
         ))}
-        <p className="text-center text-yellow-500">total : $ {cartTotal} </p>
+        <p className="text-center text-yellow-500">
+          total : $ {getCartTotal()}{" "}
+        </p>
       </div>
-      <CartForm cartTotal={cartTotal} cart={cart}/>
+      <CartForm />
     </div>
   );
 };

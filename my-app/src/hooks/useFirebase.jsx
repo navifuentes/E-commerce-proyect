@@ -1,19 +1,11 @@
-import {
-  collection,
-  getDoc,
-  getDocs,
-  doc,
-  setDoc,
-  addDoc,
-  or,
-} from "firebase/firestore";
+import { collection, getDoc, getDocs, doc, addDoc } from "firebase/firestore";
 import { db } from "../services/firebase.config";
 import { useState, useCallback, useContext } from "react";
 
 import { GlobalContext } from "../context/GlobalContext";
 
 export default function useFirebase() {
-  const { products, setProducts, product, setProduct, filter, setFilter } =
+  const { products, setProducts, product, setProduct } =
     useContext(GlobalContext);
 
   const [loading, setLoading] = useState(false);
@@ -32,7 +24,7 @@ export default function useFirebase() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [setProducts]);
 
   const getProduct = async ({ id }) => {
     try {
@@ -47,8 +39,9 @@ export default function useFirebase() {
 
   const createOrder = async (order) => {
     try {
-      const newOrderDoc = await addDoc(collection(db, "orders"), order);
-      console.log(newOrderDoc);
+      const newOrder = await addDoc(collection(db, "orders"), order);
+      console.log(newOrder);
+      return newOrder;
     } catch (error) {
       console.log(error);
     }

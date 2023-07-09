@@ -7,6 +7,7 @@ import Cart from "../pages/Cart";
 import Footer from "../components/Footer/Footer";
 import GlobalProvider from "../context/GlobalContext";
 import CartProvider from "../context/CartProvider";
+import Checkout from "../components/Card/Checkout";
 
 export const Rutas = () => {
   return (
@@ -19,6 +20,7 @@ export const Rutas = () => {
             <Route path="/products/:id" element={<ItemDetail />} />
             <Route path="/category/:category" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/cart/checkout" element={<Checkout />} />
           </Routes>
           <Footer />
         </GlobalProvider>

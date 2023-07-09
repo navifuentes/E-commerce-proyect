@@ -7,9 +7,10 @@
     listado compacto de la orden con el precio total.
     ✅ Al ingresar su nombre, apellido, teléfono e e-mail (ingresándolo dos veces para
     corroborar que sea correcto), 
-        ● Debe activarse el botón de ‘realizar compra’.
+        ✅ Debe activarse el botón de ‘realizar compra’.
     ✅ Al clickear ‘realizar compra’ debe guardarse en la base de datos una orden que
     tenga todos los productos, la fecha y    
+        ● Convertir en hook   
         ● Dar feedback del número de orden.
     ● Agregar alerts
     

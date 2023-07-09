@@ -5,7 +5,7 @@ import Rutas from "./routes/Rutas";
 
 function App() {
   return (
-    <div className="App bg-pink-300 dark:bg-black dark:text-white">
+    <div className="App bg-black dark:text-white">
       <Rutas />
     </div>
   );

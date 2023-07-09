@@ -10,9 +10,6 @@ const CartCard = ({ item }) => {
       <div className="text-yellow-600">$ {price} c/u</div>
       <div>cantidad : {quantity}</div>
       <strong className="text-yellow-600">subtotal: $ {total}</strong>
-      <button className="rounded-full py-1 px-2 bg-red-700 text-white text-xl">
-        QUITAR
-      </button>
     </div>
   );
 };

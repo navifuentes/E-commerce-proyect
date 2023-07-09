@@ -1,52 +1,37 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { CartContext } from "../../context/CartProvider";
 import useFirebase from "../../hooks/useFirebase";
+import { useNavigate } from "react-router-dom";
 
-const CartForm = ({ cartTotal, cart }) => {
-  const [order, setOrder] = useState({});
-
-  //sacar a un hook
+const CartForm = () => {
+  const { cart, getCartTotal, cleanCart, purchaseOrder } =
+    useContext(CartContext);
+  const { createOrder } = useFirebase();
+  const navigate = useNavigate();
+  //USE REF
+  const order = useRef({});
+  // const orderSuccess = useRef(false);
+  // USE STATES
   const [form, setForm] = useState({
     email: "",
     name: "",
     lastname: "",
     phone: "",
   });
-
+  const [verifiedForm, setVerifiedForm] = useState(false);
   const [verified, setVerified] = useState({
     email: false,
     name: false,
     lastname: false,
     phone: false,
   });
-
-  const { createOrder } = useFirebase();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (
-      verified.email &&
-      verified.name &&
-      verified.lastname &&
-      verified.phone
-    ) {
-      setOrder({
-        buyer: { ...form },
-        total: cartTotal,
-        products: cart,
-      });
-      createOrder(order);
-      console.log("new order created");
-    } else {
-      console.log("unverfied form inputs");
-    }
-  }
-
+  // FUNCTIONS
   function handleChange(e) {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
+    return;
   }
   function handleBlur(e) {
     if (form?.[e.target.name] === e.target.value) {
@@ -55,16 +40,69 @@ const CartForm = ({ cartTotal, cart }) => {
         [e.target.name]: true,
       });
       console.log(`${e.target.name} true`);
+      return;
     } else {
       setVerified({
         ...verified,
         [e.target.name]: false,
       });
       console.log(`${e.target.name} false`);
-      console.log(form);
-      console.log(verified);
+      return;
     }
   }
+  function verifyEffect() {
+    if (
+      verified.email &&
+      verified.name &&
+      verified.lastname &&
+      verified.phone
+    ) {
+      setVerifiedForm(true);
+      console.log("form");
+    } else {
+      setVerifiedForm(false);
+      console.log("unverified form X");
+    }
+  }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      if (cart.length <= 0) {
+        return console.log("no items in cart");
+      }
+
+      if (verifiedForm) {
+        order.current = {
+          buyer: form,
+          total: getCartTotal(),
+          products: cart,
+          date: new Date().toDateString(),
+        };
+        const orderDb = await createOrder(order.current);
+        // orderSuccess.current = true;
+        cleanCart();
+        console.log(orderDb.id);
+        purchaseOrder.current = { ...order.current, id: orderDb.id };
+        navigate("/cart/checkout");
+        return;
+      } else {
+        return console.log("form is not verified ");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  //USE EFFECT
+  useEffect(() => {
+    verifyEffect();
+  }, [verified]);
+
+  /* useEffect(() => {
+    if (orderSuccess.current) {
+      return redirect("/cart/checkout");
+    }
+  }, [orderSuccess]);
+ */
 
   return (
     <>
@@ -83,7 +121,7 @@ const CartForm = ({ cartTotal, cart }) => {
           required
         />
         <input
-          //className={checkEmail() ? "border-2 border-yellow-500 my-2" : "border-2 border-red-500 my-2"}
+          className={"border-2 border-red-500 my-2"}
           name="email"
           type="email"
           onBlur={handleBlur}
@@ -137,12 +175,21 @@ const CartForm = ({ cartTotal, cart }) => {
           onBlur={handleBlur}
           placeholder="repeat your phone"
         />
-        <button
-          className="rounded-full bg-blue-800 hover:bg-blue-950 text-white px-2 my-2"
-          type="submit"
-        >
-          Buy
-        </button>
+        {verifiedForm & (cart.length > 0) ? (
+          <button
+            className="rounded-full bg-blue-800 hover:bg-blue-950 text-white px-2 my-2"
+            type="submit"
+          >
+            Buy
+          </button>
+        ) : (
+          <div
+            className="bg-cyan-950
+           text-white"
+          >
+            Insert your data
+          </div>
+        )}
       </form>
     </>
   );

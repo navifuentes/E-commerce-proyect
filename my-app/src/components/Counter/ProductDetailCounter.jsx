@@ -4,29 +4,28 @@ import { CartContext } from "../../context/CartProvider";
 const ProductDetailCounter = ({ title, id, price }) => {
   const [number, setNumber] = useState(0);
   const { cart, addToCart } = useContext(CartContext);
-
-  const item = {
+  //PRODUCT ORDER
+  const productOrder = {
     title: title,
     id: id,
     price: price,
     quantity: number,
   };
 
-  const sumar = () => {
+  function increase() {
     setNumber(number + 1);
-  };
-  const restar = () => {
+  }
+  function decrease() {
     if (number > 0) {
       setNumber(number - 1);
     }
-  };
-  console.log("cart", cart);
+  }
 
   return (
     <div>
       <button
         className="rounded-lg bg-blue-800 hover:bg-blue-950 mx-2 px-2"
-        onClick={sumar}
+        onClick={increase}
       >
         +
       </button>
@@ -35,17 +34,19 @@ const ProductDetailCounter = ({ title, id, price }) => {
       </button>
       <button
         className="rounded-lg bg-blue-800 hover:bg-blue-950 mx-2 px-2"
-        onClick={restar}
+        onClick={decrease}
       >
         -
       </button>
       <button
         onClick={() => {
-          if (number > 0) addToCart(item);
+          if (number > 0) {
+            addToCart(productOrder);
+          }
         }}
         className="rounded-full bg-blue-800 hover:bg-blue-950 p-2"
       >
-        Agregar al carrito
+        Add to cart !
       </button>
     </div>
   );
