@@ -9,11 +9,11 @@ const Checkout = () => {
     <>
       {purchaseOrder.current ? (
         <div className="flex flex-col items-center text-center mt-10">
-          <div className="border-2 rounded-full p-2 border-white">
+          <div className="bg-blue-950 border-2 rounded-full p-2 border-white">
             order id: <span className="text-slate-400">{id}</span>
           </div>
           <hr />
-          <div className=" text-center p-10 my-8 border-2 border-white rounded-full grid grid-cols-3">
+          <div className=" text-center bg-blue-950 p-10 my-8 border-2 border-white rounded-full grid grid-cols-2">
             <div className="border-2 border-white">
               name:{" "}
               <span className="text-slate-400">
@@ -36,7 +36,7 @@ const Checkout = () => {
               total: <span className="text-yellow-600">${total}</span>
             </div>
             <hr />
-            <div className="col-span-3 overflow-y-auto">
+            <div className="col-span-2 overflow-y-auto">
               {products.map((product) => (
                 <CartCard key={product} item={product} />
               ))}

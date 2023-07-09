@@ -3,6 +3,11 @@ import { CartContext } from "../../context/CartProvider";
 import useFirebase from "../../hooks/useFirebase";
 import { useNavigate } from "react-router-dom";
 
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
+
 const CartForm = () => {
   const { cart, getCartTotal, cleanCart, purchaseOrder } =
     useContext(CartContext);
@@ -83,6 +88,11 @@ const CartForm = () => {
         cleanCart();
         console.log(orderDb.id);
         purchaseOrder.current = { ...order.current, id: orderDb.id };
+        MySwal.fire({
+          title: <p>Your purchase is complete !</p>,
+          icon: "success",
+          timer: 1500,
+        });
         navigate("/cart/checkout");
         return;
       } else {

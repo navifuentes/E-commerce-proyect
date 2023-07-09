@@ -1,5 +1,9 @@
 import React, { useState, useContext } from "react";
 import { CartContext } from "../../context/CartProvider";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const ProductDetailCounter = ({ title, id, price }) => {
   const [number, setNumber] = useState(0);
@@ -42,6 +46,11 @@ const ProductDetailCounter = ({ title, id, price }) => {
         onClick={() => {
           if (number > 0) {
             addToCart(productOrder);
+            MySwal.fire({
+              title: <p>Added to cart !</p>,
+              icon: "success",
+              timer:1500
+            });
           }
         }}
         className="rounded-full bg-blue-800 hover:bg-blue-950 p-2"
